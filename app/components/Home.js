@@ -35,11 +35,18 @@ class Home extends React.Component {
         return (
             <div className='container-fluid'>
                 <div className='row'>
-                    <div className="col-md-4">
+                    <div className="col-md-2">
                         <h2>Sidebar</h2>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-10">
                         <h2>Main Content Section</h2>
+                        <table className="table table-striped">
+                            <tr> <td>Header1</td> <td>Header2</td></tr>
+                            <tr> <td>aaa</td> <td>bbb</td></tr>
+                            <tr> <td>aaa</td> <td>bbb</td></tr>
+                            <tr> <td>aaa</td> <td>bbb</td></tr>
+
+                        </table>
                     </div>
                 </div>
 
