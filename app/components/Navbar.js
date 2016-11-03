@@ -62,9 +62,9 @@ class Navbar extends React.Component {
                 <div className='navbar-header'>
                     <button type='button' className='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar'>
                         <span className='sr-only'>Toggle navigation</span>
-                        <span className='icon-bar'></span>
-                        <span className='icon-bar'></span>
-                        <span className='icon-bar'></span>
+                        <span className='icon-bar'/>
+                        <span className='icon-bar'/>
+                        <span className='icon-bar'/>
                     </button>
                     <Link to='/' className='navbar-brand'>
             <span ref='triangles' className={'triangles animated ' + this.state.ajaxAnimationClass}>
@@ -78,7 +78,7 @@ class Navbar extends React.Component {
               <div className='tri'></div>
               <div className='tri invert'></div>
             </span>
-                        NEF
+                        BC3000
                         <span className='badge badge-up badge-danger'>{this.state.onlineUsers}</span>
                     </Link>
                 </div>
