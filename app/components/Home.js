@@ -39,9 +39,12 @@ class Home extends React.Component {
                         <h2>Sidebar</h2>
                     </div>
                     <div className="col-md-10">
-                        <h2>Main Content Section</h2>
-                        <table className="table table-striped">
-                            <tr> <td>Header1</td> <td>Header2</td></tr>
+                        <h2>列表信息</h2>
+                        <table className="table table-hover">
+                            <tr>
+                                <th>名称</th>
+                                <th>状态</th>
+                            </tr>
                             <tr> <td>aaa</td> <td>bbb</td></tr>
                             <tr> <td>aaa</td> <td>bbb</td></tr>
                             <tr> <td>aaa</td> <td>bbb</td></tr>
