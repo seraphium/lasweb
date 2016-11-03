@@ -44,10 +44,12 @@ class Home extends React.Component {
                             <tr>
                                 <th>名称</th>
                                 <th>状态</th>
+                                <th>照片</th>
+
                             </tr>
-                            <tr> <td>aaa</td> <td>bbb</td></tr>
-                            <tr> <td>aaa</td> <td>bbb</td></tr>
-                            <tr> <td>aaa</td> <td>bbb</td></tr>
+                            <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-default'  >查看</button></td></tr>
+                            <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-default'  >查看</button></td></tr>
+                            <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-default'  >查看</button></td></tr>
 
                         </table>
                     </div>
