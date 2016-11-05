@@ -36,22 +36,33 @@ class Home extends React.Component {
             <div className='container-fluid'>
                 <div className='row'>
                     <div className="col-md-2">
-                        <h2>Sidebar</h2>
+                        <div className="list-group">
+                            <a href="#" className="list-group-item active">Cras justo odid</a>
+                            <a href="#" className="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" className="list-group-item">Morbi leo risus</a>
+                            <a href="#" className="list-group-item">Porta ac consectetur ac</a>
+                            <a href="#" className="list-group-item">Vestibulum at eros</a>
+                        </div>
                     </div>
                     <div className="col-md-10">
-                        <h2>列表信息</h2>
-                        <table className="table table-hover">
-                            <tr>
-                                <th>名称</th>
-                                <th>状态</th>
-                                <th>照片</th>
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <span className="glyphicon glyphicon-record"></span>所有球体
+                            </div>
+                            <table className="table table-hover">
+                                <tr>
+                                    <th>名称</th>
+                                    <th>状态</th>
+                                    <th>照片</th>
 
-                            </tr>
-                            <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-default'  >查看</button></td></tr>
-                            <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-default'  >查看</button></td></tr>
-                            <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-default'  >查看</button></td></tr>
+                                </tr>
+                                <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
+                                <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-danger disabled'  >获取失败</button></td></tr>
+                                <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
 
-                        </table>
+                            </table>
+                            </div>
+
                     </div>
                 </div>
 
