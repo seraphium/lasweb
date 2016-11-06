@@ -54,8 +54,9 @@ class Home extends React.Component {
                 <div className='row'>
                     <div className="col-md-3">
                         <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div><h4>球体列表</h4></div>
                             <form className="form-inline" role="form">
-                                    <label className="sr-only" for="exampleInputEmail2">Email address</label>
+                                    <label className="sr-only" htmlFor="exampleInputEmail2">Email address</label>
                                     <input type="text" className="form-control" id="exampleInputEmail2" placeholder="Enter Name"></input>
                                     <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span> </button>
                                 </form>
@@ -63,23 +64,25 @@ class Home extends React.Component {
                                 <div className="panel-heading" role="tab" id="headingOne">
                                     <h4 className="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Collapsible1
+                                            北京
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseOne" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                    <a href="#"  className="list-group-item">Cras justo odio</a>
-                                    <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
-                                    <a href="#"  className="list-group-item">Morbi leo risus</a>
-                                    <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
-                                    <a href="#"  className="list-group-item">Vestibulum at eros</a>
+                                        <div className="list-group">
+                                            <a href="#"  className="list-group-item">Cras justo odio</a>
+                                            <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
+                                            <a href="#"  className="list-group-item">Morbi leo risus</a>
+                                            <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
+                                            <a href="#"  className="list-group-item">Vestibulum at eros</a>
+                                        </div>
                                 </div>
                             </div>
                             <div className="panel panel-default">
                                 <div className="panel-heading" role="tab" id="headingTwo">
                                     <h4 className="panel-title">
                                         <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Collapsible2
+                                            上海
                                         </a>
                                     </h4>
                                 </div>
@@ -95,7 +98,7 @@ class Home extends React.Component {
                                 <div className="panel-heading" role="tab" id="headingThree">
                                     <h4 className="panel-title">
                                         <a  data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                            Collapsible3
+                                            广州
                                         </a>
                                     </h4>
                                 </div>
