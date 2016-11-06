@@ -55,10 +55,13 @@ class Home extends React.Component {
                     <div className="col-md-3">
                         <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div><h4>球体列表</h4></div>
-                            <form className="form-inline" role="form">
-                                    <label className="sr-only" htmlFor="exampleInputEmail2">Email address</label>
+                            <form className="form-horizontal" role="form">
+                                <div className="input-group">
                                     <input type="text" className="form-control" id="exampleInputEmail2" placeholder="Enter Name"></input>
+                                    <span className="input-group-btn">
                                     <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span> </button>
+                                    </span>
+                               </div>
                                 </form>
                             <div className="panel panel-default">
                                 <div className="panel-heading" role="tab" id="headingOne">
@@ -117,7 +120,7 @@ class Home extends React.Component {
                     <div className="col-md-9">
                         <div className="panel panel-default">
                             <div className="panel-heading">
-                                <span className="glyphicon glyphicon-record"></span>所有球体
+                                <span className="glyphicon glyphicon-record"></span>球体名称
                             </div>
                             <table className="table table-hover">
                                 <tbody>
