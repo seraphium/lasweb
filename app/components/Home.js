@@ -34,32 +34,101 @@ class Home extends React.Component {
     render() {
         return (
             <div className='container-fluid'>
-                <div className='row'>
-                    <div className="col-md-2">
-                        <div className="list-group">
-                            <a href="#" className="list-group-item active">Cras justo odid</a>
-                            <a href="#" className="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" className="list-group-item">Morbi leo risus</a>
-                            <a href="#" className="list-group-item">Porta ac consectetur ac</a>
-                            <a href="#" className="list-group-item">Vestibulum at eros</a>
+                <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button type="button" className="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
+                                <h4 className="modal-title" id="myModalLabel">Modal title</h4>
+                            </div>
+                            <div className="modal-body">
+                                ...
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-md-10">
+                </div>
+                <div className='row'>
+                    <div className="col-md-3">
+                        <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <form className="form-inline" role="form">
+                                    <label className="sr-only" for="exampleInputEmail2">Email address</label>
+                                    <input type="text" className="form-control" id="exampleInputEmail2" placeholder="Enter Name"></input>
+                                    <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span> </button>
+                                </form>
+                            <div className="panel panel-default">
+                                <div className="panel-heading" role="tab" id="headingOne">
+                                    <h4 className="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Collapsible1
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <a href="#"  className="list-group-item">Cras justo odio</a>
+                                    <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
+                                    <a href="#"  className="list-group-item">Morbi leo risus</a>
+                                    <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
+                                    <a href="#"  className="list-group-item">Vestibulum at eros</a>
+                                </div>
+                            </div>
+                            <div className="panel panel-default">
+                                <div className="panel-heading" role="tab" id="headingTwo">
+                                    <h4 className="panel-title">
+                                        <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Collapsible2
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <a href="#"  className="list-group-item">Cras justo odio</a>
+                                    <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
+                                    <a href="#"  className="list-group-item">Morbi leo risus</a>
+                                    <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
+                                    <a href="#"  className="list-group-item">Vestibulum at eros</a>
+                                </div>
+                            </div>
+                            <div className="panel panel-default">
+                                <div className="panel-heading" role="tab" id="headingThree">
+                                    <h4 className="panel-title">
+                                        <a  data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                            Collapsible3
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div className="list-group">
+                                        <a href="#"  className="list-group-item">Cras justo odio</a>
+                                        <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
+                                        <a href="#"  className="list-group-item">Morbi leo risus</a>
+                                        <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
+                                        <a href="#"  className="list-group-item">Vestibulum at eros</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-9">
                         <div className="panel panel-default">
                             <div className="panel-heading">
                                 <span className="glyphicon glyphicon-record"></span>所有球体
                             </div>
                             <table className="table table-hover">
+                                <tbody>
                                 <tr>
                                     <th>名称</th>
                                     <th>状态</th>
                                     <th>照片</th>
-
                                 </tr>
                                 <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
                                 <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-danger disabled'  >获取失败</button></td></tr>
                                 <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
 
+
+                                </tbody>
                             </table>
                             </div>
 
