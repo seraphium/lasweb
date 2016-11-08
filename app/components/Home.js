@@ -120,7 +120,7 @@ class Home extends React.Component {
                     <div className="col-md-9">
                         <div className="panel panel-default">
                             <div className="panel-heading">
-                                <span className="glyphicon glyphicon-record"></span>球体名称
+                                球体名称
                             </div>
                             <table className="table table-hover">
                                 <tbody>
