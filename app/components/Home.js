@@ -14,7 +14,6 @@ class Home extends React.Component {
 
     componentDidMount() {
         HomeStore.listen(this.onChange);
-        $('#myModal').modal('show')
 
     }
 
@@ -36,28 +35,6 @@ class Home extends React.Component {
     render() {
         return (
             <div className='container-fluid'>
-                <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-sm">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
-                                <h4 className="modal-title" id="myModalLabel">Login</h4>
-                            </div>
-                            <div className="modal-body">
-                                <form className="form" role="form">
-                                    <div className="input-group">
-                                        <input type="text" className="form-control" id="loginUsername" placeholder="User Name"></input>
-                                        <input type="text" className="form-control" id="loginPassword" placeholder="Password"></input>
-                                    </div>
-                                </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-primary">Login</button>
-                                <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div className='row'>
                     <div className="col-md-3">
                         <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
