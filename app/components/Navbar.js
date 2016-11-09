@@ -91,8 +91,9 @@ class Navbar extends React.Component {
                     </form>
                     <ul className='nav navbar-nav'>
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/Report'>Report</Link></li>
-                        <li><Link to='/Device'>Device</Link></li>
+                        <li><Link to='/Report'>Reports</Link></li>
+                        <li><Link to='/Device'>Devices</Link></li>
+                        <li><Link to='/User'>Users</Link></li>
                         <li><Link to='/Setting'>Setting</Link></li>
                     </ul>
                 </div>
