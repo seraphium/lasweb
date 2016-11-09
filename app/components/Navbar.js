@@ -66,7 +66,19 @@ class Navbar extends React.Component {
                         <span className='icon-bar'/>
                         <span className='icon-bar'/>
                     </button>
-                    <Link to='/' className='navbar-brand'>v</Link>
+                    <Link to='/' className='navbar-brand'>
+                          <span ref='triangles' className={'triangles animated ' + this.state.ajaxAnimationClass}>
+                          <div className='tri invert'></div>
+                          <div className='tri invert'></div>
+                          <div className='tri'></div>
+                          <div className='tri invert'></div>
+                          <div className='tri invert'></div>
+                          <div className='tri'></div>
+                          <div className='tri invert'></div>
+                          <div className='tri'></div>
+                          <div className='tri invert'></div>
+                        </span>
+                        BC3000</Link>
                 </div>
                 <div id='navbar' className='navbar-collapse collapse'>
                     <form ref='searchForm' className='navbar-form navbar-left animated' onSubmit={this.handleSubmit.bind(this)}>
