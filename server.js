@@ -64,10 +64,9 @@ app.use(function(req, res) {
         } else if (renderProps) {
 
             if (!req.session.loggedId) {
-                var loginPage = swig.renderFile('views/login.html');
-                res.status(200).send(loginPage);
+
                 req.session.loggedId = "123";
-                return;
+                res.redirect('/login');
             }
 
             var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));

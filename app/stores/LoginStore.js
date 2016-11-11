@@ -11,8 +11,9 @@ class LoginStore {
         //this.characters = [];
     }
 
-    onLoginSuccess(data) {
+    onLoginSuccess(history) {
 
+        history.replaceState("/")
 
     }
 

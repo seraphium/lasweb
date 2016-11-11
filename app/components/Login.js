@@ -27,6 +27,10 @@ class Login extends React.Component {
         this.setState(state);
     }
 
+    handleLogin() {
+        LoginAction.handleLogin(this.props.history);
+    }
+
 
     render() {
         return (
@@ -36,7 +40,7 @@ class Login extends React.Component {
                                         <input type="text" className="form-control" id="loginUsername" placeholder="User Name"></input>
                                         <input type="text" className="form-control" id="loginPassword" placeholder="Password"></input>
                                     </div>
-                                    <button type="button" className="btn btn-primary" onClick={LoginAction.handleLogin.bind(this)}>Login</button>
+                                    <button type="button" className="btn btn-primary" onClick={this.handleLogin.bind(this)}>Login</button>
 
                                 </form>
                             </div>

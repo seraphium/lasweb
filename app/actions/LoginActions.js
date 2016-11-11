@@ -12,8 +12,8 @@ class LoginActions {
     }
 
 
-    handleLogin() {
-        this.actions.loginSuccess();
+    handleLogin(history) {
+        this.actions.loginSuccess(history);
     }
 }
 

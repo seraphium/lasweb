@@ -11,6 +11,7 @@ import Stats from './components/Stats';
 export default (
     <Route component={App}>
         <Route path='/' component={Home} />
+        <Route path='/login' component={Login} />
         <Route path='/add' component={AddCharacter} />
         <Route path='/characters/:id' component={Character} />
         <Route path='/shame' component={CharacterList} />
