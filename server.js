@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 // Db used
 var mongoose = require('mongoose');
@@ -28,6 +30,22 @@ app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
+app.use(cookieParser('bc3000'));
+
+//session
+var connect = require('connect');
+var SessionStore = require("session-mongoose")(connect);
+var store = new SessionStore({
+    url: "mongodb://localhost/nef",
+    interval: 120000 // expiration check worker run interval in millisec (default: 60000)
+});
+
+app.use(session({
+    store: store,
+    secret: 'keyboard cat',
+    cookie: { maxAge: 900000 }
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -38,16 +56,25 @@ require('./api');
 //React route
 app.use(function(req, res) {
     Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
+
         if (err) {
             res.status(500).send(err.message)
         } else if (redirectLocation) {
             res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
         } else if (renderProps) {
+
+            if (!req.session.loggedId) {
+                var loginPage = swig.renderFile('views/login.html');
+                res.status(200).send(loginPage);
+                req.session.loggedId = "123";
+                return;
+            }
+
             var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
             var page = swig.renderFile('views/index.html', { html: html });
             res.status(200).send(page);
         } else {
-            res.status(404).send('Page Not Found')
+            res.status(404).send('Page Not Found');
         }
     });
 });

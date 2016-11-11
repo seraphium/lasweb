@@ -4,10 +4,6 @@
 import alt from '../alt';
 import LoginActions from '../actions/LoginActions';
 import React from 'react';
-import Router from 'react-router';
-import ReactDOM from 'react-dom';
-import routes from '../routes';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 class LoginStore {
     constructor() {
@@ -17,9 +13,7 @@ class LoginStore {
 
     onLoginSuccess(data) {
 
-        let history = createBrowserHistory();
 
-        ReactDOM.render(<Router history={history}>{routes}</Router>, document.getElementById('app'));
     }
 
 
