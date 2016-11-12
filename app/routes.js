@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router';
 import App from './components/App';
-import Login from "./components/Login";
 import Home from './components/Home';
 import AddCharacter from './components/AddCharacter';
 import Character from './components/Character';
@@ -11,7 +10,6 @@ import Stats from './components/Stats';
 export default (
     <Route component={App}>
         <Route path='/' component={Home} />
-        <Route path='/login' component={Login} />
         <Route path='/add' component={AddCharacter} />
         <Route path='/characters/:id' component={Character} />
         <Route path='/shame' component={CharacterList} />

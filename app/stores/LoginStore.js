@@ -8,17 +8,16 @@ import React from 'react';
 class LoginStore {
     constructor() {
         this.bindActions(LoginActions);
-        //this.characters = [];
+        this.logged = false;
     }
 
-    onLoginSuccess(history) {
-
-        history.replaceState("/")
-
+    onLoginSuccess() {
+        this.logged = true;
     }
 
 
     onLoginFail(errorMessage) {
+        this.logged = false;
         toastr.error(errorMessage);
     }
 

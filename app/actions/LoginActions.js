@@ -12,8 +12,12 @@ class LoginActions {
     }
 
 
-    handleLogin(history) {
-        this.actions.loginSuccess(history);
+    handleLogin(logged) {
+        if (logged) {
+            this.actions.loginSuccess();
+        } else {
+            this.actions.loginFailed();
+        }
     }
 }
 
