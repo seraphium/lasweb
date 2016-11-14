@@ -53,6 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Api route
 require('./api');
 
+var Login = require('./app/components/Login').default;
 
 //React route
 app.use(function(req, res) {
@@ -63,15 +64,15 @@ app.use(function(req, res) {
         } else if (redirectLocation) {
             res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
         } else if (renderProps) {
-            var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
-            var page;
+            var html;
             if (req.session.logged) {
-                page = swig.renderFile('views/index.html', { html: html, hide: true});
+                html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
             } else {
                 req.session.logged = true;
-                page = swig.renderFile('views/index.html', { html: null, hide:false });
+                html = ReactDOM.renderToString(React.createElement(Login, renderProps));
 
             }
+            var  page = swig.renderFile('views/index.html', { html: html});
 
             res.status(200).send(page);
         } else {
