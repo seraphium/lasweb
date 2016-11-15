@@ -57,23 +57,21 @@ var Login = require('./app/components/Login').default;
 
 //React route
 app.use(function(req, res) {
-    Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
+
+        Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
 
         if (err) {
             res.status(500).send(err.message)
         } else if (redirectLocation) {
             res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
         } else if (renderProps) {
-            var html;
-            if (req.session.logged) {
-                html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
-            } else {
-                req.session.logged = true;
-                html = ReactDOM.renderToString(React.createElement(Login, renderProps));
-
-            }
+            var  html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
             var  page = swig.renderFile('views/index.html', { html: html});
 
+            if (!req.session.logged) {
+                req.session.logged = true;
+                return res.redirect('/login');
+            }
             res.status(200).send(page);
         } else {
             res.status(404).send('Page Not Found');
