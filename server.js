@@ -69,9 +69,9 @@ app.use(function(req, res) {
             var  html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
             var  page = swig.renderFile('views/index.html', { html: html});
 
-            if (!req.session.logged && req.query.redirect != 'true') {
+            if (!req.session.logged && req.url != '/login') {
                 console.log("redirect to login");
-                return res.redirect('/login?redirect=true');
+                return res.redirect('/login');
             }
             console.log("send home page");
             res.status(200).send(page);
