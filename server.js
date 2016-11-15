@@ -63,15 +63,17 @@ app.use(function(req, res) {
         if (err) {
             res.status(500).send(err.message)
         } else if (redirectLocation) {
+            console.log("redirect");
             res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
         } else if (renderProps) {
             var  html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
             var  page = swig.renderFile('views/index.html', { html: html});
 
-            if (!req.session.logged) {
-                req.session.logged = true;
-                return res.redirect('/login');
+            if (!req.session.logged && req.query.redirect != 'true') {
+                console.log("redirect to login");
+                return res.redirect('/login?redirect=true');
             }
+            console.log("send home page");
             res.status(200).send(page);
         } else {
             res.status(404).send('Page Not Found');
