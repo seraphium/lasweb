@@ -53,8 +53,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Api route
 require('./api');
 
-var Login = require('./app/components/Login').default;
-
 //React route
 app.use(function(req, res) {
 

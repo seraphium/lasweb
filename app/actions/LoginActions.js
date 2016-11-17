@@ -14,15 +14,27 @@ class LoginActions {
     }
 
 
-    handleLogin() {
+    handleLogin(payload) {
         //login logic here
+        let params = {
+            username:  payload.userName,
+            password: payload.password
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/api/login', data: params})
+            .done((data) => {
+                if (data.result == 'true') {
+                    this.actions.loginSuccess(payload);
 
+                } else {
+                    this.actions.loginailed();
+                }
+            })
+            .fail((jqXhr) => {
+                this.actions.loginFailed(jqXhr);
+            });
 
-        if (true) {
-            this.actions.loginSuccess();
-        } else {
-            this.actions.loginFailed();
-        }
     }
 }
 

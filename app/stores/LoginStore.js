@@ -14,20 +14,23 @@ class LoginStore {
     }
 
     onUpdateUsername(data) {
-        this.username = data;
+        this.username = data.target.value;
     }
 
     onUpdatePassword(data) {
-        this.password = data;
+        this.password = data.target.value;
     }
 
-    onLoginSuccess() {
-        this.logged = true;
+    onLoginSuccess(payload) {
+
+        $('#loginModal').modal('hide')
+
+        payload.history.pushState(null, '/');
+
     }
 
 
     onLoginFail(errorMessage) {
-        this.logged = false;
         toastr.error(errorMessage);
     }
 

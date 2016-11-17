@@ -29,7 +29,17 @@ class Login extends React.Component {
     }
 
     handleLogin() {
-        LoginAction.handleLogin(this.props.history);
+
+        event.preventDefault();
+
+        let userName = this.state.username;
+        let password = this.state.password;
+
+        LoginAction.handleLogin({
+                    userName: userName,
+                    password: password,
+                    history: this.props.history
+                });
     }
 
 
@@ -53,7 +63,7 @@ class Login extends React.Component {
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-primary" onClick={LoginAction.handleLogin.bind(this)}>Login</button>
+                                <button type="button" className="btn btn-primary" onClick={this.handleLogin.bind(this)}>Login</button>
                             </div>
                         </div>
                     </div>
