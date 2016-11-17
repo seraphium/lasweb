@@ -9,7 +9,7 @@ class LoginActions {
             "updateUsername",
             "updatePassword",
             'loginSuccess',
-            'loginFailed'
+            'loginFail'
         );
     }
 
@@ -28,11 +28,11 @@ class LoginActions {
                     this.actions.loginSuccess(payload);
 
                 } else {
-                    this.actions.loginailed();
+                    this.actions.loginFail("invalid username/password");
                 }
             })
             .fail((jqXhr) => {
-                this.actions.loginFailed(jqXhr);
+                this.actions.loginFail(jqXhr);
             });
 
     }

@@ -23,8 +23,8 @@ app.post('/api/login', function(req, res, next) {
     var parser = new xml2js.Parser();
 
     //authenticate username/password
-
-    if (true) {
+    var result = (username == 'test') && (password == '123');
+    if (result) {
         req.session.logged = true;
         res.send({ result: 'true' });
 
