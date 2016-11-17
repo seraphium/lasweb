@@ -2,12 +2,13 @@
  * Created by zezhang on 2016/11/2.
  */
 import alt from '../alt';
-import LoginActions from '../actions/LoginActions';
+import RegisterActions from '../actions/RegisterActions';
 import React from 'react';
 
-class LoginStore {
+class RegisterStore
+{
     constructor() {
-        this.bindActions(LoginActions);
+        this.bindActions(RegisterActions);
         this.username = "";
         this.password = "";
         this.logged = false;
@@ -34,4 +35,4 @@ class LoginStore {
 
 }
 
-export default alt.createStore(LoginStore);
+export default alt.createStore(RegisterStore);
