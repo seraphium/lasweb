@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
 import LoginStore from '../stores/LoginStore'
 import LoginAction from '../actions/LoginActions';
 import {first, without, findWhere} from 'underscore';
@@ -46,13 +45,15 @@ class Login extends React.Component {
                             <div className="modal-body">
                                 <form className="form" role="form">
                                     <div className="input-group">
-                                        <input type="text" className="form-control" id="loginUsername" placeholder="User Name"></input>
-                                        <input type="text" className="form-control" id="loginPassword" placeholder="Password"></input>
+                                        <input type="text" className="form-control" id="loginUsername" placeholder="User Name"
+                                               value={this.state.userName} onChange={LoginAction.updateUsername}></input>
+                                        <input type="text" className="form-control" id="loginPassword" placeholder="Password"
+                                               value={this.state.password} onChange={LoginAction.updatePassword}></input>
                                     </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-primary">Login</button>
+                                <button type="button" className="btn btn-primary" onClick={LoginAction.handleLogin.bind(this)}>Login</button>
                             </div>
                         </div>
                     </div>

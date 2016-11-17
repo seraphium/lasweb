@@ -6,14 +6,19 @@ import alt from '../alt';
 class LoginActions {
     constructor() {
         this.generateActions(
+            "updateUsername",
+            "updatePassword",
             'loginSuccess',
             'loginFailed'
         );
     }
 
 
-    handleLogin(logged) {
-        if (logged) {
+    handleLogin() {
+        //login logic here
+
+
+        if (true) {
             this.actions.loginSuccess();
         } else {
             this.actions.loginFailed();

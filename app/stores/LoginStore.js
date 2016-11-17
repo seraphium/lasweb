@@ -8,7 +8,17 @@ import React from 'react';
 class LoginStore {
     constructor() {
         this.bindActions(LoginActions);
+        this.username = "";
+        this.password = "";
         this.logged = false;
+    }
+
+    onUpdateUsername(data) {
+        this.username = data;
+    }
+
+    onUpdatePassword(data) {
+        this.password = data;
     }
 
     onLoginSuccess() {
