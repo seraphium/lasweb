@@ -6,33 +6,33 @@ import alt from '../alt';
 class RegisterActions {
     constructor() {
         this.generateActions(
-            "updateUsername",
-            "updatePassword",
-            'loginSuccess',
-            'loginFail'
+            'registerSuccess',
+            'registerFail'
         );
     }
 
 
-    handleLogin(payload) {
-        //login logic here
+    register(payload) {
+
         let params = {
-            username:  payload.userName,
-            password: payload.password
+            username:  payload.username,
+            password: payload.password,
+            telnum: payload.telnum
         };
+
         $.ajax({
             type: 'POST',
-            url: '/api/login', data: params})
+            url: '/api/register', data: params})
             .done((data) => {
                 if (data.result == 'true') {
-                    this.actions.loginSuccess(payload);
+                    this.actions.registerSuccess(payload);
 
                 } else {
-                    this.actions.loginFail("invalid username/password");
+                    this.actions.registerFail("invalid username/password");
                 }
             })
             .fail((jqXhr) => {
-                this.actions.loginFail(jqXhr);
+                this.actions.registerFail(jqXhr);
             });
 
     }

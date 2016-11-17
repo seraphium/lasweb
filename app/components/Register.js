@@ -47,6 +47,18 @@ class Register extends React.Component {
 
     handleRegister() {
 
+        if ($('#password')[0].value != $('#repeatPassword')[0].value) {
+            toastr.error("password not match");
+            return;
+        }
+        var param = {
+            username: $('#username')[0].value,
+            password: $('#password')[0].value,
+            telnum: $('#telnum')[0].value,
+            history: this.props.history
+        };
+        RegisterActions.register(param);
+
     }
 
     render() {
@@ -55,14 +67,10 @@ class Register extends React.Component {
                     <h4> Register new user</h4>
 
                     <div className="input-group">
-                        <input type="text" className="form-control" id="Username" placeholder="User Name"
-                               value={this.state.userName} onChange={RegisterActions.updateUsername}></input>
-                        <input type="text" className="form-control" id="Password" placeholder="Password"
-                               value={this.state.password} onChange={RegisterActions.updatePassword}></input>
-                        <input type="text" className="form-control" id="repeatPassword" placeholder="repeat password"
-                               value={this.state.password} onChange={RegisterActions.updatePassword}></input>
-                        <input type="text" className="form-control" id="telnum" placeholder="Telephone number"
-                               value={this.state.password} onChange={RegisterActions.updatePassword}></input>
+                        <input type="text" className="form-control" id="username" placeholder="User Name"> </input>
+                        <input type="password" className="form-control" id="password" placeholder="Password"></input>
+                        <input type="password" className="form-control" id="repeatPassword" placeholder="repeat password"></input>
+                        <input type="text" className="form-control" id="telnum" placeholder="Telephone number"></input>
                     </div>
                     <button type="button" className="btn btn-primary" onClick={this.handleRegister.bind(this)}>Register</button>
                     <button type="button" className="btn btn-default" onClick={this.cancel.bind(this)}>Cancel </button>
