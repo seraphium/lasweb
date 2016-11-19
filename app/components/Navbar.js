@@ -15,7 +15,6 @@ class Navbar extends React.Component {
 
     componentDidMount() {
         NavbarStore.listen(this.onChange);
-        NavbarActions.getCharacterCount();
 
         let socket = io.connect();
 
@@ -56,6 +55,13 @@ class Navbar extends React.Component {
         }
     }
 
+    handleLogout(event) {
+        NavbarActions.handleLogout({
+            history: this.props.history
+        } );
+    }
+
+
     render() {
         return (
             <nav className='navbar navbar-default navbar-static-top'>
@@ -84,9 +90,9 @@ class Navbar extends React.Component {
                     <form ref='searchForm' className='navbar-form navbar-left animated' onSubmit={this.handleSubmit.bind(this)}>
                         <div className='input-group'>
                             <input type='text' className='form-control' placeholder={this.state.totalCharacters + ' characters'} value={this.state.searchQuery} onChange={NavbarActions.updateSearchQuery} />
-              <span className='input-group-btn'>
-                <button className='btn btn-default' onClick={this.handleSubmit.bind(this)}><span className='glyphicon glyphicon-search'></span></button>
-              </span>
+                         <span className='input-group-btn'>
+                             <button className='btn btn-default' onClick={this.handleSubmit.bind(this)}><span className='glyphicon glyphicon-search'></span></button>
+                        </span>
                         </div>
                     </form>
                     <ul className='nav navbar-nav'>
@@ -95,7 +101,11 @@ class Navbar extends React.Component {
                         <li><Link to='/Device'>Devices</Link></li>
                         <li><Link to='/User'>Users</Link></li>
                         <li><Link to='/Setting'>Setting</Link></li>
+
                     </ul>
+                    <p className="navbar-text">Signed in as {this.state.loggedName}</p>
+                    <button className='btn btn-default navbar-btn' onClick={this.handleLogout.bind(this)}>Logout</button>
+
                 </div>
             </nav>
         );

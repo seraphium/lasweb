@@ -7,38 +7,31 @@ import {assign} from 'underscore';
 class NavbarActions {
     constructor() {
         this.generateActions(
-            'updateOnlineUsers',
+           'updateLoggedName',
+            'logoutSuccess',
+            'logoutFailed',
             'updateAjaxAnimation',
-            'updateSearchQuery',
-            'getCharacterCountSuccess',
-            'getCharacterCountFail',
-            'findCharacterSuccess',
-            'findCharacterFail'
+
         );
     }
 
-    findCharacter(payload) {
-        $.ajax({
-            url: '/api/characters/search',
-            data: { name: payload.searchQuery }
-        })
+    handleLogout(payload) {
+       /* $.ajax({
+            type: 'POST',
+            url: '/api/logout', data: params})
             .done((data) => {
-                assign(payload, data);
-                this.actions.findCharacterSuccess(payload);
-            })
-            .fail(() => {
-                this.actions.findCharacterFail(payload);
-            });
-    }
+                if (data.result == true) {
+                    this.actions.logoutSuccess(payload);
 
-    getCharacterCount() {
-        $.ajax({ url: '/api/characters/count' })
-            .done((data) => {
-                this.actions.getCharacterCountSuccess(data)
+                } else {
+                    this.actions.logoutFailed(data.message);
+                }
             })
             .fail((jqXhr) => {
-                this.actions.getCharacterCountFail(jqXhr)
-            });
+                this.actions.logoutFailed(jqXhr);
+            });*/
+
+        this.actions.logoutSuccess(payload);
     }
 }
 

@@ -22,7 +22,6 @@ class LoginStore {
     }
 
     onLoginSuccess(payload) {
-
         payload.history.pushState(null, '/');
 
     }

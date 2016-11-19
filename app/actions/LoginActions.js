@@ -2,6 +2,7 @@
  * Created by zezhang on 2016/11/2.
  */
 import alt from '../alt';
+import NavbarAction from "../actions/NavbarActions";
 
 class LoginActions {
     constructor() {
@@ -25,6 +26,8 @@ class LoginActions {
             url: '/api/login', data: params})
             .done((data) => {
                 if (data.result == true) {
+                    NavbarAction.updateLoggedName(params.username);
+
                     this.actions.loginSuccess(payload);
 
                 } else {
