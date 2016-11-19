@@ -10,9 +10,24 @@ class NavbarActions {
            'updateLoggedName',
             'logoutSuccess',
             'logoutFailed',
+            'getUserinfoSucceed',
             'updateAjaxAnimation',
 
         );
+    }
+
+    getUserInfo(payload) {
+
+        $.ajax({
+            type: 'GET',
+            url: '/api/userinfo'})
+            .done((data) => {
+                this.actions.getUserinfoSucceed(data);
+
+            })
+            .fail((jqXhr) => {
+
+            });
     }
 
     handleLogout(payload) {

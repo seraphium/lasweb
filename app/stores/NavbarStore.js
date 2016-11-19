@@ -8,7 +8,7 @@ class NavbarStore {
     constructor() {
         this.bindActions(NavbarActions);
         this.totalCharacters = 0;
-        this.loggedName = "Unsigned";
+        this.loggedName = "";
         this.searchQuery = '';
         this.ajaxAnimationClass = '';
     }
@@ -21,6 +21,10 @@ class NavbarStore {
 
     onUpdateLoggedName(name) {
         this.loggedName = name;
+    }
+
+    onGetUserinfoSucceed(data) {
+        this.loggedName = data.username;
     }
 
     onLogoutSuccess(payload) {

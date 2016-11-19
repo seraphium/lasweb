@@ -37,7 +37,7 @@ app.post('/api/login', function(req, res, next) {
 
         if (user) {
             req.session.logged = true;
-            req.session.userId = user.userId;
+            req.session.username = user.username;
             return res.send({result: true, message: "ok"});
         } else {
             return res.send({result: false, message: "invalid username/password"});
@@ -76,8 +76,10 @@ app.post('/api/register', function(req, res, next) {
          });
      });
 
+});
 
 
-
+app.get('/api/userinfo', function(req, res, next) {
+        return res.send({username: req.session.username});
 
 });

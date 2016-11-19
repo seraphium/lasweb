@@ -16,11 +16,15 @@ class Navbar extends React.Component {
     componentDidMount() {
         NavbarStore.listen(this.onChange);
 
+        NavbarActions.getUserInfo(this.props.history);
+
+
         let socket = io.connect();
 
         socket.on('onlineUsers', (data) => {
             NavbarActions.updateOnlineUsers(data);
         });
+
 
         $(document).ajaxStart(() => {
             NavbarActions.updateAjaxAnimation('fadeIn');
