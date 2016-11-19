@@ -9,27 +9,19 @@ class RegisterStore
 {
     constructor() {
         this.bindActions(RegisterActions);
-        this.username = "";
-        this.password = "";
-        this.logged = false;
-    }
-
-    onUpdateUsername(data) {
-        this.username = data.target.value;
-    }
-
-    onUpdatePassword(data) {
-        this.password = data.target.value;
-    }
-
-    onLoginSuccess(payload) {
-
-        payload.history.pushState(null, '/');
 
     }
 
 
-    onLoginFail(errorMessage) {
+
+    onRegisterSuccess(payload) {
+
+        payload.history.pushState(null, '/login');
+
+    }
+
+
+    onRegisterFail(errorMessage) {
         toastr.error(errorMessage);
     }
 

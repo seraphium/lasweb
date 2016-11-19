@@ -24,11 +24,11 @@ class RegisterActions {
             type: 'POST',
             url: '/api/register', data: params})
             .done((data) => {
-                if (data.result == 'true') {
+                if (data.result == true) {
                     this.actions.registerSuccess(payload);
 
                 } else {
-                    this.actions.registerFail("invalid username/password");
+                    this.actions.registerFail(data.message);
                 }
             })
             .fail((jqXhr) => {

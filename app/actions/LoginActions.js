@@ -24,11 +24,11 @@ class LoginActions {
             type: 'POST',
             url: '/api/login', data: params})
             .done((data) => {
-                if (data.result == 'true') {
+                if (data.result == true) {
                     this.actions.loginSuccess(payload);
 
                 } else {
-                    this.actions.loginFail("invalid username/password");
+                    this.actions.loginFail(data.message);
                 }
             })
             .fail((jqXhr) => {
