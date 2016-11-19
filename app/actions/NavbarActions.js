@@ -31,9 +31,9 @@ class NavbarActions {
     }
 
     handleLogout(payload) {
-       /* $.ajax({
+        $.ajax({
             type: 'POST',
-            url: '/api/logout', data: params})
+            url: '/api/logout'})
             .done((data) => {
                 if (data.result == true) {
                     this.actions.logoutSuccess(payload);
@@ -44,7 +44,7 @@ class NavbarActions {
             })
             .fail((jqXhr) => {
                 this.actions.logoutFailed(jqXhr);
-            });*/
+            });
 
         this.actions.logoutSuccess(payload);
     }

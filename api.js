@@ -78,8 +78,16 @@ app.post('/api/register', function(req, res, next) {
 
 });
 
-
+//get session related user info
 app.get('/api/userinfo', function(req, res, next) {
         return res.send({username: req.session.username});
+
+});
+
+//logout
+app.post('/api/logout', function(req, res, next) {
+    req.session.logged = false;
+    return res.send({result: true});
+
 
 });
