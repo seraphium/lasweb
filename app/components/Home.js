@@ -50,6 +50,14 @@ class Home extends React.Component {
                             <div className="panel panel-default">
                                 <div className="panel-heading" role="tab" id="headingOne">
                                     <h4 className="panel-title">
+                                        <a data-parent="#accordion" href="#all">
+                                            全部</a>
+                                    </h4>
+                                </div>
+                            </div>
+                            <div className="panel panel-default">
+                                <div className="panel-heading" role="tab" id="headingOne">
+                                    <h4 className="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             北京
                                         </a>
