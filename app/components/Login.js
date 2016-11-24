@@ -52,7 +52,7 @@ class Login extends React.Component {
                     <div className="input-group">
                         <input type="text" className="form-control" id="loginUsername" placeholder="User Name"
                                value={this.state.username} onChange={LoginAction.updateUsername}></input>
-                        <input type="text" className="form-control" id="loginPassword" placeholder="Password"
+                        <input type="password" className="form-control" id="loginPassword" placeholder="Password"
                                value={this.state.password} onChange={LoginAction.updatePassword}></input>
                     </div>
                     <button type="button" className="btn btn-primary" onClick={this.handleLogin.bind(this)}>Login</button>
