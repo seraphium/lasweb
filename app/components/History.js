@@ -29,7 +29,7 @@ class History extends React.Component {
     render() {
         let unitList = this.state.units.map((unit, index) => {
             return (
-                <tr> <td>{unit.name}</td> <td>{unit.type}</td><td>{unit.status}</td><td><button className='btn btn-success'  >查看</button></td></tr>
+                <tr key={unit.unitId}> <td>{unit.name}</td> <td>{unit.type}</td><td>{unit.status}</td><td><button className='btn btn-success'  >查看</button></td></tr>
             );
         });
 

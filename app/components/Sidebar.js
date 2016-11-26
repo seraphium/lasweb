@@ -27,80 +27,56 @@ class Sidebar extends React.Component {
 
 
     render() {
-        return (
-                        <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div><h4>球体列表</h4></div>
-                            <form className="form-horizontal" role="form">
-                                <div className="input-group">
-                                    <input type="text" className="form-control" id="exampleInputEmail2" placeholder="Enter Name"></input>
-                                    <span className="input-group-btn">
+
+        var parentList = this.state.units.filter((unit) => { return unit.type == 0 }).map((parent, index) => {
+            var childList = this.state.units.filter((unit) => { return unit.type == 1 && unit.parentId == parent.unitId }).map((child, index) => {
+               return (<a href="#" key={child.unitId} className="list-group-item">{child.name}</a>);
+
+            });
+
+
+            return (
+                <div className="panel panel-default" key={parent.name}>
+                    <div className="panel-heading" role="tab" id={"heading"+parent.unitId}>
+                        <h4 className="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href={"#collapse"+parent.unitId} aria-expanded="true" aria-controls={"collapse"+parent.unitId}>
+                                {parent.name}
+                            </a>
+                        </h4>
+                    </div>
+                    <div id={"collapse"+parent.unitId} className="panel-collapse collapse" role="tabpanel" aria-labelledby={"heading"+parent.unitId}>
+                        <div className="list-group">
+                            {childList}
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+
+        return (<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div><h4>球体列表</h4></div>
+            <form className="form-horizontal" role="form">
+                <div className="input-group">
+                    <input type="text" className="form-control" id="exampleInputEmail2" placeholder="Enter Name"></input>
+                    <span className="input-group-btn">
                                     <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span> </button>
                                     </span>
-                               </div>
-                                </form>
-                            <div className="panel panel-default">
-                                <div className="panel-heading" role="tab" id="headingOne">
-                                    <h4 className="panel-title">
-                                        <a data-parent="#accordion" href="#all">
-                                            全部</a>
-                                    </h4>
-                                </div>
-                            </div>
-                            <div className="panel panel-default">
-                                <div className="panel-heading" role="tab" id="headingOne">
-                                    <h4 className="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            北京
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                        <div className="list-group">
-                                            <a href="#"  className="list-group-item">Cras justo odio</a>
-                                            <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
-                                            <a href="#"  className="list-group-item">Morbi leo risus</a>
-                                            <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
-                                            <a href="#"  className="list-group-item">Vestibulum at eros</a>
-                                        </div>
-                                </div>
-                            </div>
-                            <div className="panel panel-default">
-                                <div className="panel-heading" role="tab" id="headingTwo">
-                                    <h4 className="panel-title">
-                                        <a className="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            上海
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                    <a href="#"  className="list-group-item">Cras justo odio</a>
-                                    <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
-                                    <a href="#"  className="list-group-item">Morbi leo risus</a>
-                                    <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
-                                    <a href="#"  className="list-group-item">Vestibulum at eros</a>
-                                </div>
-                            </div>
-                            <div className="panel panel-default">
-                                <div className="panel-heading" role="tab" id="headingThree">
-                                    <h4 className="panel-title">
-                                        <a  data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                            广州
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                    <div className="list-group">
-                                        <a href="#"  className="list-group-item">Cras justo odio</a>
-                                        <a href="#"  className="list-group-item">Dapibus ac facilisis in</a>
-                                        <a href="#"  className="list-group-item">Morbi leo risus</a>
-                                        <a href="#"  className="list-group-item">Porta ac consectetur ac</a>
-                                        <a href="#"  className="list-group-item">Vestibulum at eros</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </form>
+            <div className="panel panel-default">
+                <div className="panel-heading" role="tab" id="headingOne">
+                    <h4 className="panel-title">
+                        <a data-parent="#accordion" href="#all">
+                            全部</a>
+                    </h4>
+                </div>
+            </div>
+            {parentList}
+            </div>
 
         );
+
+
     }
 }
 
