@@ -7,12 +7,36 @@ import HomeActions from '../actions/HomeActions';
 class HomeStore {
     constructor() {
         this.bindActions(HomeActions);
-        this.characters = [];
+
+        this.units = [{unitId: '1',
+            parentId: null,
+            type: 0, name:'unit1',
+            location: "Shanghai",
+            status: 0},
+            {unitId: '2',
+            parentId: null,
+            type: 0, name:'unit2',
+            location: "Shanghai",
+            status: 0},
+            {unitId: '3',
+                parentId: null,
+                type: 0, name:'unit3',
+                location: "Shanghai",
+                status: 0}
+            ,
+            {unitId: '4',
+                parentId: null,
+                type: 0, name:'unit4',
+                location: "Shanghai",
+                status: 0}
+            ,
+            {unitId: '5',
+                parentId: null,
+                type: 0, name:'unit5',
+                location: "Shanghai",
+                status: 0}];
     }
 
-    onGetTwoCharactersSuccess(data) {
-        this.characters = data;
-    }
 
     onGetTwoCharactersFail(errorMessage) {
         toastr.error(errorMessage);

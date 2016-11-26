@@ -27,28 +27,29 @@ class History extends React.Component {
 
 
     render() {
+        let unitList = this.state.units.map((unit, index) => {
+            return (
+                <tr> <td>{unit.name}</td> <td>{unit.type}</td><td>{unit.status}</td><td><button className='btn btn-success'  >查看</button></td></tr>
+            );
+        });
+
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
                     球体报警历史
                 </div>
                 <table className="table table-hover">
-                    <tbody>
+                    <thead>
                     <tr>
                         <th>名称</th>
+                        <th>类型</th>
                         <th>状态</th>
                         <th>照片</th>
                     </tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-danger disabled'  >获取失败</button></td></tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
-                    <tr> <td>aaa</td> <td>bbb</td><td><button className='btn btn-success'  >查看</button></td></tr>
+                    </thead>
+                    <tbody>
 
-
+                    {unitList}
                     </tbody>
                 </table>
             </div>
