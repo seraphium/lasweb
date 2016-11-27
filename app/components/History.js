@@ -26,33 +26,35 @@ class History extends React.Component {
     }
 
 
+
+
     render() {
-        let unitList = this.state.units
-            .filter(u =>  (this.state.selectedUnitId == -1 ||
-            u.unitId == this.state.selectedUnitId)&& u.type == 1)
-            .map((unit, index) => {
+        let reportList = this.state.reports
+            .filter(report =>  (this.state.selectedUnit == null ||
+            report.unitId == this.state.selectedUnit.unitId))
+            .map((report, index) => {
             return (
-                <tr key={unit.unitId}> <td>{unit.name}</td> <td>{unit.type}</td><td>{unit.status}</td><td><button className='btn btn-success'  >查看</button></td></tr>
+                <tr key={report.reportId}> <td>{report.time}</td> <td>{report.quota}</td><td>{report.isAlert?'报警':'历史'}</td><td><button className='btn btn-success'  >查看</button></td></tr>
             );
         });
 
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    球体报警历史
+                    球体报警历史({this.state.selectedUnit == null ? '全部' : this.state.selectedUnit.name})
                 </div>
                 <table className="table table-hover">
                     <thead>
                     <tr>
-                        <th>名称</th>
-                        <th>类型</th>
+                        <th>时间</th>
+                        <th>参数</th>
                         <th>状态</th>
                         <th>照片</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    {unitList}
+                    {reportList}
                     </tbody>
                 </table>
             </div>

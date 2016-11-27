@@ -6,15 +6,22 @@ import alt from '../alt';
 class HomeActions {
     constructor() {
         this.generateActions(
-            'selectedUnitSuccess'
+            'selectedUnitSuccess',
+            'clearUnitSuccess'
         );
     }
 
     handleSelectedUnit(unitId) {
         this.actions.selectedUnitSuccess(unitId);
     }
+    clearSelectedUnit() {
+        this.actions.clearUnitSuccess();
 
+    }
 }
+
+
+
 
 
 

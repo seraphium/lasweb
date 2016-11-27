@@ -32,6 +32,11 @@ class Sidebar extends React.Component {
         HomeActions.handleSelectedUnit(param);
     }
 
+
+    clearSelect(param) {
+        HomeActions.clearSelectedUnit();
+    }
+
     render() {
 
         var parentList = this.state.units.filter((unit) => { return unit.type == 0 }).map((parent, index) => {
@@ -72,7 +77,7 @@ class Sidebar extends React.Component {
             <div className="panel panel-default">
                 <div className="panel-heading" role="tab" id="headingOne">
                     <h4 className="panel-title">
-                        <a data-parent="#accordion" href="#all">
+                        <a data-parent="#accordion" href="#all" onClick={this.clearSelect.bind(this)}>
                             全部</a>
                     </h4>
                 </div>
