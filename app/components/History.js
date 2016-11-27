@@ -27,7 +27,10 @@ class History extends React.Component {
 
 
     render() {
-        let unitList = this.state.units.map((unit, index) => {
+        let unitList = this.state.units
+            .filter(u =>  (this.state.selectedUnitId == -1 ||
+            u.unitId == this.state.selectedUnitId)&& u.type == 1)
+            .map((unit, index) => {
             return (
                 <tr key={unit.unitId}> <td>{unit.name}</td> <td>{unit.type}</td><td>{unit.status}</td><td><button className='btn btn-success'  >查看</button></td></tr>
             );

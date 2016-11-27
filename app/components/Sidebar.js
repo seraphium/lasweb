@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
-import HomeStore from '../stores/HomeStore'
+import HomeStore from '../stores/HomeStore';
+import HomeActions from '../actions/HomeActions';
+
 import {first, without, findWhere} from 'underscore';
 
 class Sidebar extends React.Component {
@@ -26,11 +28,15 @@ class Sidebar extends React.Component {
     }
 
 
+    handleSelect(param) {
+        HomeActions.handleSelectedUnit(param);
+    }
+
     render() {
 
         var parentList = this.state.units.filter((unit) => { return unit.type == 0 }).map((parent, index) => {
             var childList = this.state.units.filter((unit) => { return unit.type == 1 && unit.parentId == parent.unitId }).map((child, index) => {
-               return (<a href="#" key={child.unitId} className="list-group-item">{child.name}</a>);
+               return (<a href="#" key={child.unitId} className="list-group-item" onClick={this.handleSelect.bind(this, child.unitId)}>{child.name}</a>);
 
             });
 
