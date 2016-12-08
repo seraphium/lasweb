@@ -52,11 +52,11 @@ app.post('/api/login', function(req, res, next) {
  * Register user.
  */
 app.post('/api/register', function(req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
-    var telnum = req.body.telnum;
+    var backendId = req.body.backendId;
+    var productId = req.body.productId;
+    var userParam = req.body.objects[0];
 
-     User.findOne({ username: username }, function(err, user) {
+     User.findOne({ username: userParam.Name }, function(err, user) {
          if (err) return next(err);
 
          if (user) { //already exists user
@@ -64,10 +64,10 @@ app.post('/api/register', function(req, res, next) {
          }
 
          var user = new User({
-             userId: getRandomId(),
-             username: username,
-             password: password,
-             telnum: telnum,
+             userId: userParam.Id,
+             username: userParam.Name,
+             password: userParam.Password,
+             telnum: userParam.PhoneNum,
          });
 
          user.save(function (err) {
