@@ -32,7 +32,7 @@ app.post('/api/login', function(req, res, next) {
 
     //authenticate username/password
 
-    User.findOne({ username: username, password: password }, function(err, user) {
+    User.findOne({ Name: username, Password: password }, function(err, user) {
         if (err) return next(err);
 
         if (user) {
@@ -64,10 +64,15 @@ app.post('/api/register', function(req, res, next) {
          }
 
          var user = new User({
-             userId: userParam.Id,
-             username: userParam.Name,
-             password: userParam.Password,
-             telnum: userParam.PhoneNum,
+             Id: userParam.Id,
+             BackendId: userParam.BackendId,
+             Name:  userParam.Name ,
+             Password: userParam.Password,
+             PhoneNum: userParam.PhoneNum,
+             Dept: userParam.Dept,
+             Line: userParam.Line,
+             Permission: userParam.Permission,
+             Remark: userParam.Remark,
          });
 
          user.save(function (err) {

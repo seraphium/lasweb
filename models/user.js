@@ -4,10 +4,15 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
-    userId: { type: String, unique: true, index: true },
-    username: String,
-    password: String,
-    telnum: String
+    Id: { type: String, unique: true, index: true },
+    Name: String,
+    Password: String,
+    PhoneNum: String,
+    Dept: String,
+    Line: String,
+    Permission: Number,
+    Remark: String,
+    BackendId: String
 });
 
 module.exports = mongoose.model('User', userSchema);
