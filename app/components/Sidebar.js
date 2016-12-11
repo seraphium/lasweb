@@ -50,9 +50,12 @@ class Sidebar extends React.Component {
                 <div className="panel panel-default" key={parent.name}>
                     <div className="panel-heading" role="tab" id={"heading"+parent.unitId}>
                         <h4 className="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href={"#collapse"+parent.unitId} aria-expanded="true" aria-controls={"collapse"+parent.unitId}>
-                                {parent.name}
-                            </a>
+                            <div className="input-group">
+                                <a data-toggle="collapse" data-parent="#accordion" href={"#collapse"+parent.unitId} aria-expanded="true" aria-controls={"collapse"+parent.unitId}>
+                                    {parent.name}
+                                </a>
+                                <button className='btn btn-default btn-sm pull-right' key={parent.name}>添加球体</button>
+                            </div>
                         </h4>
                     </div>
                     <div id={"collapse"+parent.unitId} className="panel-collapse collapse" role="tabpanel" aria-labelledby={"heading"+parent.unitId}>
