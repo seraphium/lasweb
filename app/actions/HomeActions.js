@@ -18,6 +18,11 @@ class HomeActions {
         this.actions.clearUnitSuccess();
 
     }
+
+    handleAddUnit(param) {
+        console.log("added unit parent id:" + param)
+    }
+
 }
 
 

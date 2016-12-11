@@ -37,6 +37,10 @@ class Sidebar extends React.Component {
         HomeActions.clearSelectedUnit();
     }
 
+    handleAddUnit(param) {
+        HomeActions.handleAddUnit(param);
+    }
+
     render() {
 
         var parentList = this.state.units.filter((unit) => { return unit.type == 0 }).map((parent, index) => {
@@ -47,14 +51,15 @@ class Sidebar extends React.Component {
 
 
             return (
-                <div className="panel panel-default" key={parent.name}>
+                <div className="panel panel-default" key={parent.unitId}>
                     <div className="panel-heading" role="tab" id={"heading"+parent.unitId}>
                         <h4 className="panel-title">
                             <div className="input-group">
                                 <a data-toggle="collapse" data-parent="#accordion" href={"#collapse"+parent.unitId} aria-expanded="true" aria-controls={"collapse"+parent.unitId}>
                                         {parent.name}
                                     </a>
-                                <button className='btn btn-default btn-sm sidebarHorizontalRight' key={parent.name}>添加球体</button>
+                                <button className='btn btn-default btn-sm sidebarHorizontalRight' key={parent.name}
+                                        onClick={this.handleAddUnit.bind(this, parent.unitId)}>添加球体</button>
                             </div>
                         </h4>
                     </div>
