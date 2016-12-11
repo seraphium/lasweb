@@ -7,7 +7,9 @@ class HomeActions {
     constructor() {
         this.generateActions(
             'selectedUnitSuccess',
-            'clearUnitSuccess'
+            'clearUnitSuccess',
+            'updateUnitSuccess',
+            'updateFailed'
         );
     }
 
@@ -20,7 +22,19 @@ class HomeActions {
     }
 
     handleAddUnit(param) {
-        console.log("added unit parent id:" + param)
+        $.ajax({
+                type: 'POST',
+                url: '/api/sendupdate',
+                data: JSON.stringify(param),
+                dataType: 'json',
+                contentType: 'application/json; charset=UTF-8'
+        })
+            .done((data) => {
+                this.actions.updateUnitSuccess(data)
+            })
+            .fail((jqXhr) => {
+                this.actions.updateFailed(jqXhr)
+            });
     }
 
 }

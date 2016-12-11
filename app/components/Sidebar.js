@@ -37,11 +37,13 @@ class Sidebar extends React.Component {
         HomeActions.clearSelectedUnit();
     }
 
-    handleAddUnit(param) {
-        HomeActions.handleAddUnit(param);
+    handleAddUnit() {
+        HomeActions.handleAddUnit();
     }
 
+
     render() {
+
 
         var parentList = this.state.units.filter((unit) => { return unit.type == 0 }).map((parent, index) => {
             var childList = this.state.units.filter((unit) => { return unit.type == 1 && unit.parentId == parent.unitId }).map((child, index) => {
@@ -51,6 +53,8 @@ class Sidebar extends React.Component {
 
 
             return (
+
+
                 <div className="panel panel-default" key={parent.unitId}>
                     <div className="panel-heading" role="tab" id={"heading"+parent.unitId}>
                         <h4 className="panel-title">
@@ -59,7 +63,7 @@ class Sidebar extends React.Component {
                                         {parent.name}
                                     </a>
                                 <button className='btn btn-default btn-sm sidebarHorizontalRight' key={parent.name}
-                                        onClick={this.handleAddUnit.bind(this, parent.unitId)}>添加球体</button>
+                                        data-toggle="modal" data-target="#myModal">添加球体</button>
                             </div>
                         </h4>
                     </div>
@@ -72,26 +76,52 @@ class Sidebar extends React.Component {
             );
         });
 
-        return (<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div><h4>球体列表</h4></div>
-            <form className="form-horizontal" role="form">
-                <div className="input-group">
-                    <input type="text" className="form-control" id="exampleInputEmail2" placeholder="Enter Name"></input>
-                    <span className="input-group-btn">
+        return (
+            <div>
+                <div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button type="button" className="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
+                                <h4 className="modal-title" id="myModalLabel">添加球体</h4>
+                            </div>
+                            <div className="modal-body">
+                                <div className="input-group">
+                                    <input type="text" className="form-control" id="unitName" placeholder="Unit Name"
+                                           value={this.state.Name} ></input>
+                                    <input type="text" className="form-control" id="unitLocation" placeholder="Location"
+                                           value={this.state.password} ></input>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="button" className="btn btn-primary" onClick={this.handleAddUnit.bind(this)}>保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div><h4>球体列表</h4></div>
+                    <form className="form-horizontal" role="form">
+                        <div className="input-group">
+                            <input type="text" className="form-control" id="exampleInputEmail2" placeholder="Enter Name"></input>
+                            <span className="input-group-btn">
                                     <button type="submit" className="btn btn-default"><span className="glyphicon glyphicon-search"></span> </button>
                                     </span>
-                </div>
-            </form>
-            <div className="panel panel-default">
-                <div className="panel-heading" role="tab" id="headingOne">
-                    <h4 className="panel-title">
-                        <a data-parent="#accordion" href="#all" onClick={this.clearSelect.bind(this)}>
-                            全部</a>
-                    </h4>
+                        </div>
+                    </form>
+                    <div className="panel panel-default">
+                        <div className="panel-heading" role="tab" id="headingOne">
+                            <h4 className="panel-title">
+                                <a data-parent="#accordion" href="#all" onClick={this.clearSelect.bind(this)}>
+                                    全部</a>
+                            </h4>
+                        </div>
+                    </div>
+                    {parentList}
                 </div>
             </div>
-            {parentList}
-            </div>
+
 
         );
 

@@ -12,6 +12,8 @@ var _ = require('underscore');
 
 var User = require('./models/user');
 
+var Unit = require('./models/unit');
+
 function getRandomId(){
     var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     var nums="";
@@ -80,6 +82,50 @@ app.post('/api/register', function(req, res, next) {
              res.send({result: true, message: "ok"});
          });
      });
+
+});
+
+
+/**
+ * POST /api/sendupdate
+ * add/update unit
+ */
+app.post('/api/sendupdate', function(req, res, next) {
+    var type = req.body.type;
+
+    if (type == 'unit') {
+        var unitParam = req.body.objects[0];
+        Unit.findOne({ Id: unitParam.Id }, function(err, unit) {
+            if (err) return next(err);
+            if (unit) { //already exists user
+                unit.ParendId = unitParam.Id;
+                unit.Type = unitParam.Type;
+                unit.Name = unitParam.Name;
+                unit.Location = unitParam.Location;
+                unit.Status = unitParam.Status;
+            }
+            else {
+                unit = new Unit({
+                    Id: unitParam.Id,
+                    ParentId: unitParam.ParentId,
+                    Type: unitParam.Type,
+                    Name:unitParam.Name,
+                    Location: unitParam.Location,
+                    Status: unitParam.Status
+                });
+            }
+
+
+            unit.save(function (err) {
+                if (err) return next(err);
+                res.send({result: true, message: "ok"});
+            });
+        });
+
+    }
+
+
+
 
 });
 

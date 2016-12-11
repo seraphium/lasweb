@@ -9,7 +9,7 @@ var unitSchema = new mongoose.Schema({
         Type: Number,
         Name:String,
         Location: String,
-        Statue: Number
+        Status: Number
 });
 
 module.exports = mongoose.model('Unit', unitSchema);
