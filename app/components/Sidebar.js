@@ -9,6 +9,7 @@ class Sidebar extends React.Component {
 
     constructor(props) {
         super(props);
+        this.selectedParentId = null;
         this.state = HomeStore.getState();
         this.onChange = this.onChange.bind(this);
     }
@@ -37,11 +38,22 @@ class Sidebar extends React.Component {
         HomeActions.clearSelectedUnit();
     }
 
-    handleAddUnit() {
-        var param = {
+    handleSelectedUnitAddClick(parentId) {
+
+        $('#addUnitModal').modal('show');
+
+        this.selectedParentId = parentId;
+
+
+    }
+
+    submitAddUnit(){
+        let param = {
+            parentId: this.selectedParentId,
             unitName: $('#unitName')[0].value,
             unitLocation: $('#unitLocation')[0].value,
         };
+
         HomeActions.handleAddUnit(param);
     }
 
@@ -67,7 +79,7 @@ class Sidebar extends React.Component {
                                         {parent.name}
                                     </a>
                                 <button className='btn btn-default btn-sm sidebarHorizontalRight' key={parent.name}
-                                        data-toggle="modal" data-target="#myModal">添加球体</button>
+                                        onClick={this.handleSelectedUnitAddClick.bind(this, parent.unitId)}>添加球体</button>
                             </div>
                         </h4>
                     </div>
@@ -82,7 +94,7 @@ class Sidebar extends React.Component {
 
         return (
             <div>
-                <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div className="modal fade" id="addUnitModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -97,7 +109,7 @@ class Sidebar extends React.Component {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" className="btn btn-primary" onClick={this.handleAddUnit.bind(this)}>保存</button>
+                                <button type="button" className="btn btn-primary" onClick={this.submitAddUnit.bind(this)}>保存</button>
                             </div>
                         </div>
                     </div>
