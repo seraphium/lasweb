@@ -38,7 +38,11 @@ class Sidebar extends React.Component {
     }
 
     handleAddUnit() {
-        HomeActions.handleAddUnit();
+        var param = {
+            unitName: $('#unitName')[0].value,
+            unitLocation: $('#unitLocation')[0].value,
+        };
+        HomeActions.handleAddUnit(param);
     }
 
 
@@ -78,7 +82,7 @@ class Sidebar extends React.Component {
 
         return (
             <div>
-                <div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -87,10 +91,8 @@ class Sidebar extends React.Component {
                             </div>
                             <div className="modal-body">
                                 <div className="input-group">
-                                    <input type="text" className="form-control" id="unitName" placeholder="Unit Name"
-                                           value={this.state.Name} ></input>
-                                    <input type="text" className="form-control" id="unitLocation" placeholder="Location"
-                                           value={this.state.password} ></input>
+                                    <input type="text" className="form-control" id="unitName" placeholder="Unit Name"></input>
+                                    <input type="text" className="form-control" id="unitLocation" placeholder="Location"></input>
                                 </div>
                             </div>
                             <div className="modal-footer">
