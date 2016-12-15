@@ -124,10 +124,25 @@ app.post('/api/sendupdate', function(req, res, next) {
 
     }
 
+});
 
+/**
+ *  /api/fetchupdate
+ * Get updated data
+ */
+app.get('/api/fetchupdate', function(req, res, next) {
+    var type = req.query.type;
 
+    if (type == 'unit') {
+        Unit.find({}, function(err, units) {
+            if (err) return next(err);
+            res.send({result: true, type: type,objects: units});
+        });
+
+    }
 
 });
+
 
 //get session related user info
 app.get('/api/userinfo', function(req, res, next) {
