@@ -8,7 +8,7 @@ class HomeActions {
         this.generateActions(
             'selectedUnitSuccess',
             'clearUnitSuccess',
-            'updateUnitSuccess',
+            'updateSuccess',
             'updateFailed'
         );
     }
@@ -30,7 +30,7 @@ class HomeActions {
                 contentType: 'application/json; charset=UTF-8'
         })
             .done((data) => {
-                this.actions.updateUnitSuccess(data)
+                this.actions.updateSuccess(data)
             })
             .fail((jqXhr) => {
                 this.actions.updateFailed(jqXhr)

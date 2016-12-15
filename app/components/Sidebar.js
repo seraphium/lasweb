@@ -48,12 +48,19 @@ class Sidebar extends React.Component {
     }
 
     submitAddUnit(){
-        let param = {
-            parentId: this.selectedParentId,
-            unitName: $('#unitName')[0].value,
-            unitLocation: $('#unitLocation')[0].value,
-        };
+        $('#addUnitModal').modal('hide');
 
+        let unit = {
+            ParentId: this.selectedParentId,
+            Type: 0,
+            Name: $('#unitName')[0].value,
+            Status: 0,
+            Location: $('#unitLocation')[0].value,
+        };
+        let param = {
+            type: "unit",
+            objects: [unit]
+        };
         HomeActions.handleAddUnit(param);
     }
 

@@ -106,7 +106,7 @@ app.post('/api/sendupdate', function(req, res, next) {
             }
             else {
                 unit = new Unit({
-                    Id: unitParam.Id,
+                    Id: getRandomId(),
                     ParentId: unitParam.ParentId,
                     Type: unitParam.Type,
                     Name:unitParam.Name,

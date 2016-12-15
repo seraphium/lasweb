@@ -58,18 +58,17 @@ class HomeStore {
         this.selectedUnit = null;
     }
 
-
-
     onSelectedUnitSuccess(param) {
         this.selectedUnit = first(this.units.filter(u => u.unitId == param));
     }
 
-    onGetTwoCharactersFail(errorMessage) {
-        toastr.error(errorMessage);
+    onUpdateSuccess(){
+        payload.history.pushState(null, '/');
     }
 
-    onVoteFail(errorMessage) {
+    onUpdateFailed(errorMessage){
         toastr.error(errorMessage);
+
     }
 }
 
