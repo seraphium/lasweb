@@ -36,7 +36,7 @@ class History extends React.Component {
              let relatedUnit = first(this.state.units.filter(u => u.Id == report.unitId));
              if  (relatedUnit != null) {
                  return (
-                     <tr key={report.reportId}><td>{relatedUnit.Name}</td><td>{report.time}</td> <td>{report.time}</td> <td>{report.quota}</td><td>{report.isAlert?'报警':'历史'}</td><td><button className='btn btn-success'  >查看</button></td></tr>
+                     <tr key={report.Id}><td>{relatedUnit.Name}</td><td>{report.Time}</td> <td>{report.Quota}</td><td>{report.IsAlert?'报警':'历史'}</td><td><button className='btn btn-success'  >查看</button></td></tr>
                  );
              }
              else

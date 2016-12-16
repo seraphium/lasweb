@@ -9,7 +9,6 @@ class Sidebar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.selectedParentId = null;
         this.state = HomeStore.getState();
         this.onChange = this.onChange.bind(this);
     }
@@ -40,9 +39,9 @@ class Sidebar extends React.Component {
 
     handleSelectedUnitAddClick(parentId) {
 
-        $('#addUnitModal').modal('show');
+        this.handleSelect(parentId);
 
-        this.selectedParentId = parentId;
+        $('#addUnitModal').modal('show');
 
 
     }
@@ -51,8 +50,8 @@ class Sidebar extends React.Component {
         $('#addUnitModal').modal('hide');
 
         let unit = {
-            ParentId: this.selectedParentId,
-            Type: (this.selectedParentId == null)? 0:1,
+            ParentId: this.state.selectedUnit.Id,
+            Type: ( this.state.selectedUnit == null)? 0:1,
             Name: $('#unitName')[0].value,
             Status: 0,
             Location: $('#unitLocation')[0].value,
@@ -86,7 +85,7 @@ class Sidebar extends React.Component {
                                         {parent.Name}
                                     </a>
                                 <button className='btn btn-default btn-sm'
-                                        onClick={this.handleSelectedUnitAddClick.bind(this,parent.Id)}>添加球体</button>
+                                        onClick={this.handleSelectedUnitAddClick.bind(this,parent.Id)}>+</button>
                               </div>
                         </h4>
                     </div>
@@ -99,6 +98,8 @@ class Sidebar extends React.Component {
             );
         });
 
+        let title = this.state.selectedUnit == null ? "添加城市":"添加球体";
+
         return (
             <div>
                 <div className="modal fade" id="addUnitModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -106,7 +107,7 @@ class Sidebar extends React.Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <button type="button" className="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
-                                <h4 className="modal-title" id="myModalLabel">添加球体</h4>
+                                <h4 className="modal-title" id="myModalLabel">{title}</h4>
                             </div>
                             <div className="modal-body">
                                 <div className="input-group">
