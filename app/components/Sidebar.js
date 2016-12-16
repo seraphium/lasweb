@@ -47,12 +47,12 @@ class Sidebar extends React.Component {
 
     }
 
-    submitAddCity(){
+    submitAddUnit(){
         $('#addUnitModal').modal('hide');
 
         let unit = {
             ParentId: this.selectedParentId,
-            Type: 0,
+            Type: (this.selectedParentId == null)? 0:1,
             Name: $('#unitName')[0].value,
             Status: 0,
             Location: $('#unitLocation')[0].value,
@@ -70,7 +70,7 @@ class Sidebar extends React.Component {
 
         var parentList = this.state.units.filter((unit) => { return unit.Type == 0 }).map((parent, index) => {
             var childList = this.state.units.filter((unit) => { return unit.Type == 1 && unit.ParentId == parent.Id }).map((child, index) => {
-               return (<a href="#" key={child.Id} className="list-group-item" onClick={this.handleSelect.bind(this, child.Id)}>{child.name}</a>);
+               return (<a href="#" key={child.Id} className="list-group-item" onClick={this.handleSelect.bind(this, child.Id)}>{child.Name}</a>);
 
             });
 
@@ -85,6 +85,8 @@ class Sidebar extends React.Component {
                                 <a data-toggle="collapse" data-parent="#accordion" href={"#collapse"+parent.Id} aria-expanded="true" aria-controls={"collapse"+parent.Id}>
                                         {parent.Name}
                                     </a>
+                                <button className='btn btn-default btn-sm'
+                                        onClick={this.handleSelectedUnitAddClick.bind(this,parent.Id)}>添加球体</button>
                               </div>
                         </h4>
                     </div>
@@ -114,7 +116,7 @@ class Sidebar extends React.Component {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" className="btn btn-primary" onClick={this.submitAddCity.bind(this)}>保存</button>
+                                <button type="button" className="btn btn-primary" onClick={this.submitAddUnit.bind(this)}>保存</button>
                             </div>
                         </div>
                     </div>

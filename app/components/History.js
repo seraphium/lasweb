@@ -31,21 +31,28 @@ class History extends React.Component {
     render() {
         let reportList = this.state.reports
             .filter(report =>  (this.state.selectedUnit == null ||
-            report.unitId == this.state.selectedUnit.unitId))
+            report.unitId == this.state.selectedUnit.Id))
             .map((report, index) => {
-            return (
-                <tr key={report.reportId}> <td>{report.time}</td> <td>{report.quota}</td><td>{report.isAlert?'报警':'历史'}</td><td><button className='btn btn-success'  >查看</button></td></tr>
-            );
+             let relatedUnit = first(this.state.units.filter(u => u.Id == report.unitId));
+             if  (relatedUnit != null) {
+                 return (
+                     <tr key={report.reportId}><td>{relatedUnit.Name}</td><td>{report.time}</td> <td>{report.time}</td> <td>{report.quota}</td><td>{report.isAlert?'报警':'历史'}</td><td><button className='btn btn-success'  >查看</button></td></tr>
+                 );
+             }
+             else
+                 return null;
+
         });
 
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    球体报警历史({this.state.selectedUnit == null ? '全部' : this.state.selectedUnit.name})
+                    球体报警历史({this.state.selectedUnit == null ? '全部' : this.state.selectedUnit.Name})
                 </div>
                 <table className="table table-hover">
                     <thead>
                     <tr>
+                        <th>球体</th>
                         <th>时间</th>
                         <th>参数</th>
                         <th>状态</th>

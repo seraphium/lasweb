@@ -9,7 +9,9 @@ class HomeActions {
             'selectedUnitSuccess',
             'clearUnitSuccess',
             'updateSuccess',
-            'updateFailed'
+            'updateFailed',
+            'fetchSuccess',
+            'fetchFailed'
         );
     }
 
@@ -36,6 +38,23 @@ class HomeActions {
                 this.actions.updateFailed(jqXhr)
             });
     }
+
+    fetchUnit(param) {
+        $.ajax({
+            type: 'GET',
+            url: '/api/fetchupdate',
+            data: param,
+            dataType: 'json',
+        })
+        .done((data) => {
+            this.actions.fetchSuccess(data)
+        })
+        .fail((jqXhr) => {
+            this.actions.fetchFailed(jqXhr)
+        });
+
+    }
+
 
 }
 
