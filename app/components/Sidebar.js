@@ -50,8 +50,8 @@ class Sidebar extends React.Component {
         $('#addUnitModal').modal('hide');
 
         let unit = {
-            ParentId: this.state.selectedUnit.Id,
-            Type: ( this.state.selectedUnit == null)? 0:1,
+            ParentId: (this.state.selectedUnit == null)?null:this.state.selectedUnit.Id,
+            Type: (this.state.selectedUnit == null)? 0:1,
             Name: $('#unitName')[0].value,
             Status: 0,
             Location: $('#unitLocation')[0].value,
