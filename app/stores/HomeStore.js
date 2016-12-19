@@ -12,10 +12,7 @@ class HomeStore {
         this.selectedUnit = null;
 
         this.units = [];
-
-        this.reports = [{ Id: 0, unitId:'Ufey74JCqWQO9OhdJNNFIMp2yjWYyqkO', Time:'2016-11-01 12:32:11',  IsAlert:true, Quota: 150, HasMedia:true},
-            { Id: 1, unitId:'Ufey74JCqWQO9OhdJNNFIMp2yjWYyqkO', Time:'2016-11-01 12:32:11',  IsAlert:true, Quota: 150, HasMedia:true},
-            { Id: 2, unitId:'XbLA4aZ4tQG6UXoHjelULj71pbZWNSPg', Time:'2016-11-01 12:32:11',  IsAlert:true, Quota: 150, HasMedia:true}];
+        this.reports = [];
 
     }
 
@@ -28,7 +25,7 @@ class HomeStore {
     }
 
     onUpdateSuccess(){
-        HomeActions.fetchUnit({type: "unit"});
+        HomeActions.fetchUpdatedData({type: "unit"});
 
     }
 
@@ -40,6 +37,14 @@ class HomeStore {
     onFetchSuccess(data){
         if  (data.type == "unit"){
             this.units = data.objects;
+            let unitIDs =  this.units.filter(u => u.Type == 1).map(u => u.Id);
+
+            HomeActions.fetchUpdatedData({type: "report", unitIDs: unitIDs});
+
+        }
+
+        if  (data.type == 'report') {
+            this.reports = data.objects;
 
         }
     }

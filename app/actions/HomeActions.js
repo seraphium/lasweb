@@ -39,7 +39,7 @@ class HomeActions {
             });
     }
 
-    fetchUnit(param) {
+    fetchUpdatedData(param) {
         $.ajax({
             type: 'GET',
             url: '/api/fetchupdate',
@@ -57,10 +57,6 @@ class HomeActions {
 
 
 }
-
-
-
-
 
 
 export default alt.createActions(HomeActions);

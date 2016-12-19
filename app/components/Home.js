@@ -17,8 +17,7 @@ class Home extends React.Component {
     componentDidMount() {
         HomeStore.listen(this.onChange);
 
-        HomeActions.fetchUnit({type: "unit"});
-
+        HomeActions.fetchUpdatedData({type: "unit"});
 
     }
 

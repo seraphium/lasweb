@@ -31,9 +31,9 @@ class History extends React.Component {
     render() {
         let reportList = this.state.reports
             .filter(report =>  (this.state.selectedUnit == null ||
-            report.unitId == this.state.selectedUnit.Id))
+            report.UnitId == this.state.selectedUnit.Id))
             .map((report, index) => {
-             let relatedUnit = first(this.state.units.filter(u => u.Id == report.unitId));
+             let relatedUnit = first(this.state.units.filter(u => u.Id == report.UnitId));
              if  (relatedUnit != null) {
                  return (
                      <tr key={report.Id}><td>{relatedUnit.Name}</td><td>{report.Time}</td> <td>{report.Quota}</td><td>{report.IsAlert?'报警':'历史'}</td><td><button className='btn btn-success'  >查看</button></td></tr>

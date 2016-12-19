@@ -14,6 +14,8 @@ var User = require('./models/user');
 
 var Unit = require('./models/unit');
 
+var Report = require('./models/report');
+
 function getRandomId(){
     var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     var nums="";
@@ -137,6 +139,38 @@ app.get('/api/fetchupdate', function(req, res, next) {
         Unit.find({}, function(err, units) {
             if (err) return next(err);
             res.send({result: true, type: type,objects: units});
+        });
+    } else if (type == 'report')  {
+        let relatedUnitIDs = req.query.unitIDs;
+        //test code to generate some report data
+        /*
+        Unit.find({ Id: { "$in": relatedUnitIDs } }, function(err, units) {
+            _.each(units, function(unit) {
+                let currentTime = new Date().toLocaleString();
+                let report = new Report({
+                    Id: getRandomId(),
+                    UnitId: unit.Id,
+                    Time: currentTime,
+                    IsAlert: false,
+                    Quota: 200,
+                    HasMedia: false
+                });
+
+                report.save(function (err) {
+                    if (err) return next(err);
+                });
+
+
+
+            });
+
+            //res.send({result: true, message: "ok"});
+
+
+        });  */
+        Report.find({ UnitId: { "$in": relatedUnitIDs }} , function(err, reports) {
+            if (err) return next(err);
+            res.send({result: true, type: type,objects: reports});
         });
 
     }
