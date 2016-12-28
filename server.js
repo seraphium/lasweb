@@ -36,7 +36,7 @@ app.use(cookieParser('bc3000'));
 var connect = require('connect');
 var SessionStore = require("session-mongoose")(connect);
 var store = new SessionStore({
-    url: "mongodb://localhost/nef",
+    url: config.database,
     interval: 120000 // expiration check worker run interval in millisec (default: 60000)
 });
 
