@@ -39,7 +39,7 @@ CMD ["nodemon"]
 EXPOSE 3000
 
 #docker start command
-#docker run -p 3000:3000 --name web --link db:db -e MONGO_URI="mongodb://nefadmin:123456@db/nef?authSource=nef" zezhang/lasweb
+#docker run -d -p 3000:3000 --name web --link db:db -e MONGO_URI="mongodb://nefadmin:123456@db/nef?authSource=nef" zezhang/lasweb
 
 #dependency: mongodb
 #mongodb image：tutum/mongodb
