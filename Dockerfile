@@ -32,7 +32,7 @@ CMD ["nodemon",  "/opt/lasweb/server.js"]
 EXPOSE 3000
 
 #docker start command
-#docker run -d -p 3000:3000 --name webdev --link db:db -e MONGO_URI="mongodb://nefadmin:123456@db/nef?authSource=nef"  -v D:\git\lasweb:/opt/lasweb zezhang/laswebdev
+#docker run -d -p 3000:3000 --name webdev --link db:db -e MONGO_URI="mongodb://nefadmin:123456@db/nef?authSource=nef"  -v D:\git\lasweb:/opt/lasweb viperking/laswebdev
 
 #dependency: mongodb
 #mongodb image：tutum/mongodb
