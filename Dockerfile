@@ -37,3 +37,11 @@ RUN gulp build
 CMD ["nodemon"]
 
 EXPOSE 3000
+
+#docker start command
+#docker run -p 3000:3000 --name web --link db:db -e MONGO_URI="mongodb://nefadmin:123456@db/nef?authSource=nef" zezhang/lasweb
+
+#dependency: mongodb
+#mongodb image：tutum/mongodb
+#start command:
+#docker run -d --name db -p 27017:27017 -p 28017:28017 -e MONGODB_USER="nefadmin" -e MONGODB_PASS="123456" -e MONGOD B_DATABASE="nef"  tutum/mongodb
